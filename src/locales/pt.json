@@ -1,0 +1,9 @@
+{
+  "title": "Buscador de Receitas",
+  "subtitle": "Pesquise receitas usando uma API pública",
+  "searchPlaceholder": "Digite o nome da receita",
+  "searchButton": "Buscar",
+  "loading": "Carregando receitas...",
+  "empty": "Nenhuma receita encontrada para sua busca.",
+  "error": "Não foi possível buscar as receitas."
+}

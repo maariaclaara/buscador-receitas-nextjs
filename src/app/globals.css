@@ -1,7 +1,266 @@
+/* =========================
+   Global / Reset
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
+html,
+body {
+  height: 100%;
+}
 
 body {
   margin: 0;
-  font-family:  Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #f0f0f0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Tema base (combina com seu layout atual) */
+  background: #0b0f19;
+  color: #e8eefc;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(87, 111, 255, 0.7);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(87, 111, 255, 0.3);
+}
+
+/* Scrollbar (Chrome/Edge) */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+/* =========================
+   Variables / Helpers
+========================= */
+:root {
+  --container: 1100px;
+  --radius: 14px;
+  --border: rgba(255, 255, 255, 0.08);
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  --muted: rgba(232, 238, 252, 0.72);
+  --muted-2: rgba(232, 238, 252, 0.55);
+
+  --accent: rgba(87, 111, 255, 0.9);
+  --accent-soft: rgba(87, 111, 255, 0.18);
+}
+
+/* Sticky footer: use no body do layout */
+.appShell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex: 1;
+}
+
+/* Container padrão */
+.container {
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+/* Superfície padrão (cards) */
+.surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+/* Botão padrão */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(87, 111, 255, 0.35);
+  background: var(--accent-soft);
+  color: #dbe7ff;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.08s ease;
+}
+
+.btn:hover {
+  background: rgba(87, 111, 255, 0.24);
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* =========================
+   Header (legível e profissional)
+========================= */
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  height: 70px;
+  display: flex;
+  align-items: center;
+
+  /* Fundo sólido para contraste */
+  background: #0f172a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.headerInner {
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.brandTitle {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.brandSubtitle {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.navLink {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+  margin-top: 10px;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* =========================
+   Footer (profissional)
+========================= */
+.siteFooter {
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.footerInner {
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 18px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.footerText {
+  font-size: 13px;
+  color: var(--muted-2);
+}
+
+/* =========================
+   Responsivo
+========================= */
+@media (max-width: 640px) {
+  .brandSubtitle {
+    display: none;
+  }
+
+  .nav {
+    gap: 8px;
+  }
+
+  .siteHeader {
+    height: 64px;
+  }
+
+  .brandTitle {
+    font-size: 16px;
+  }
 }

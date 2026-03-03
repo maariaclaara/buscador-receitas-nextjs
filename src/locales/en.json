@@ -1,0 +1,9 @@
+{
+  "title": "Recipe Search",
+  "subtitle": "Search recipes using a public API",
+  "searchPlaceholder": "Type a recipe name",
+  "searchButton": "Search",
+  "loading": "Loading recipes...",
+  "error": "Unable to fetch recipes.",
+  "empty": "Type something to start searching."
+}
